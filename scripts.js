@@ -3,18 +3,20 @@
 
       function drawStuff() {
         var data = new google.visualization.arrayToDataTable([
-          ['Skills', 'Out Of 10'],
-          ["JavaScript", 9],
-          ["Node.js", 7.5],
-          ["expressjs",6],
-          ["mongoDB",6],
-          ["C/C++", 7],
-          ["AngularJS",8.5],
-          ["Ionic",6.5],
-          ["PHP",7.5],
-          ["MySQL",7],
-          ["Moodle",5],
-          ["Python", 6]
+          ['Skills and competences', 'Out Of 10'],
+          ["JavaScript(ES6)", 9],
+          ["Node.js", 8],
+          ["AngularJS",8],
+          ["mongoDB",6.5],
+          ["Express.js", 7],
+          ["jQuery", 8],
+          ["Python", 6],
+          ["Git/GitHub/Phabricator", 8],
+          ["MySQL", 8],
+          ["PHP(Moodle)", 6],
+          ["Ionic/Cordova", 7],
+          
+          
           
           
          
@@ -22,7 +24,7 @@
 
         var options = {
           title: 'My Skills',
-          width: 1300,
+          width: $(window).width()-50,
           legend: { position: 'none' },
           chart: { title: 'My Skills',
                     },
@@ -38,3 +40,7 @@
         var chart = new google.charts.Bar(document.getElementById('top_x_div'));
         chart.draw(data, options);
       };
+
+      $(window).resize(function(){
+        drawStuff();
+      }); 
