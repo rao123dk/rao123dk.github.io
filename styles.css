@@ -37,3 +37,7 @@ body {
   .navbar-nav  li a:hover {
       color: #1abc9c !important;
   }
+
+  .project_title{
+    color: #4286f4;
+  }

@@ -41,6 +41,52 @@
         chart.draw(data, options);
       };
 
-      $(window).resize(function(){
-        drawStuff();
-      }); 
+      // $(window).resize(function(){
+      //   drawStuff();
+      // }); 
+$(document).ready(function(){
+  var project_database =[
+  {
+    "title":"Midday Meal Quality Control and Evaluation System",
+    "descrption":"- A web application to monitor and maintain the requirement of nutritional intake of students of government schools. This web app keeps track of the amount of food provided to the students, its nutrition value.",
+    "tech_used" :"Technology used:- JavaScript, node.js , Angularjs, Express.js,Pug and Mongodb"
+    },
+    {
+    "title":"Indian Kitchen",
+    "descrption":"- Indian Kitchen is a restaurant search and discovery service web app.",
+    "tech_used" :"Technology used:- Node.js, Javascript, Express.js, MongoDB, and Pug"
+    },
+    {
+    "title":"Form validator Plugin",
+    "descrption":"- A light weight plugin for validate the input fields of HTML registration form.",
+    "tech_used" :"Technology used: - Javascript,HTML,Algorithm"
+    }
+  ]
+  
+  $(".project_title").html("<q>"+project_database[0]["title"]+"</q>");
+  $(".project_descrption").html(project_database[0]["descrption"]);
+  $(".tech_used").html(project_database[0]["tech_used"]);
+
+  var itr=0;
+  function slide_project(){
+  var slide_intrerval = setInterval(function(){
+    $(".project_title").html("<q>"+project_database[itr]["title"]+"</q>");
+    $(".project_descrption").html(project_database[itr]["descrption"]);
+    $(".tech_used").html(project_database[itr]["tech_used"]);
+     itr++;
+     if(itr>project_database.length-1){
+      clearInterval(slide_intrerval);
+      slide_project();
+      itr=0;
+     }
+  },5000);
+  }
+
+  slide_project();
+  
+  
+    
+  
+
+
+});
