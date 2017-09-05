@@ -84,7 +84,15 @@ $(document).ready(function(){
 
   slide_project();
   
-  
+  $(".link_github").hide();
+  $(".generatelink").mouseover(function(){
+      $(".link_github").show(); 
+      $(".text_github").hide();
+  });
+  $(".generatelink").mouseout(function(){
+      $(".link_github").hide(); 
+      $(".text_github").show();
+  });
     
   
 
