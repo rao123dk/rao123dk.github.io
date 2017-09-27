@@ -8,13 +8,23 @@ fetch(_url).then(function(x){
   });
 });
 setTimeout(function(){
-  console.log(upcoming_eve);
   upcoming_eve.forEach(function(eve_i){
     console.log(eve_i);
-     $('<input type="button" id="field"/>').appendTo('#upcoming_eve');
+    var eve_i_event = eve_i["event"];
+    var eve_i_date = eve_i["Date"];
+    var eve_i_img = eve_i["img"]; 
+    var $input = $('<input/>').attr({ type: 'button', class:'eventsButton', id:eve_i_date, img:eve_i_img, value:eve_i_event, name:eve_i_event});
+    $input.appendTo('div#upcoming_eve');
   });
-} ,3000);
+  startClock(upcoming_eve[0]["Date"]);
+  $('#event_name').text(upcoming_eve[0]["event"]);
+} ,2000);
 
+
+$(document).on('click','.eventsButton',function(){
+  startClock(this.id);
+  $('#event_name').text(this.name);
+});
 
 function leftTimeToNewYear(endThisYear){
     var j = Date.parse(endThisYear);  
@@ -64,7 +74,7 @@ function startClock(endThisYear){
    var timeinterval = setInterval(updateClock, 1000);
 }
 //var endThisYear = new Date(Date.parse(new Date()) + 1 * 24 * 60 * 60 * 1000);
-startClock(endThisYear);
+// startClock(endThisYear);
 
 var AfterYearComplication = document.getElementById("AfterYearComplication");
 AfterYearComplication.style.visibility="hidden";
