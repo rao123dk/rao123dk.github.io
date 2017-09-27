@@ -11,7 +11,6 @@ fetch(_url).then(function(x){
 });
 setTimeout(function(){
   upcoming_eve.forEach(function(eve_i){
-    console.log(eve_i);
     var eve_i_event = eve_i["event"];
     var eve_i_date = eve_i["Date"];
     var eve_i_img = eve_i["img"]; 
@@ -20,6 +19,8 @@ setTimeout(function(){
   });
   startClock(upcoming_eve[0]["Date"]);
   $('#event_name').text(upcoming_eve[0]["event"]);
+  var $input = $('<img>').attr({ src: upcoming_eve[0]["img"], height:"350", width:"700"});
+  $input.appendTo('section#eve_img');
 } ,2000);
 
 
@@ -28,7 +29,7 @@ $(document).on('click','.eventsButton',function(){
   $('#eve_img').empty();
   startClock(this.id);
   $('#event_name').text(this.name);
-  var $input = $('<img>').attr({ src: $(this).attr("data-img")});
+  var $input = $('<img>').attr({ src: $(this).attr("data-img"), height:"350", width:"700"});
   $input.appendTo('section#eve_img');
 });
 
