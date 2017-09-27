@@ -1,5 +1,20 @@
 
 var endThisYear = 'Sat Dec 31 2017 23:59:59 GMT+0530 (India Standard Time)';
+var _url= "evelist.json";
+var upcoming_eve;
+fetch(_url).then(function(x){
+  x.json().then(function(data){
+    upcoming_eve = data["evelist"];
+  });
+});
+setTimeout(function(){
+  console.log(upcoming_eve);
+  upcoming_eve.forEach(function(eve_i){
+    console.log(eve_i);
+     $('<input type="button" id="field"/>').appendTo('#upcoming_eve');
+  });
+} ,3000);
+
 
 function leftTimeToNewYear(endThisYear){
     var j = Date.parse(endThisYear);  
@@ -59,10 +74,10 @@ function zerozero(){
     abc.innerHTML=`Hello ${whatsYourname} Welcome to 2017! Enjoy`;
 }
 
-window.onload = function(){
-    var nameOfPerson = document.getElementById("nameOfPerson");
-    var whatsYourname = prompt("Welcome, what is your name ?").toUpperCase();
-     nameOfPerson.innerHTML = `WELCOME ${whatsYourname}`;
-     nameOfPerson.style.color="red";
+// window.onload = function(){
+//     var nameOfPerson = document.getElementById("nameOfPerson");
+//     //var whatsYourname = prompt("Welcome, what is your name ?").toUpperCase();
+//      nameOfPerson.innerHTML = `WELCOME ${whatsYourname}`;
+//      nameOfPerson.style.color="red";
      
-}
+// }
