@@ -2,6 +2,8 @@
 var endThisYear = 'Sat Dec 31 2017 23:59:59 GMT+0530 (India Standard Time)';
 var _url= "evelist.json";
 var upcoming_eve;
+var timeinterval;
+
 fetch(_url).then(function(x){
   x.json().then(function(data){
     upcoming_eve = data["evelist"];
@@ -13,7 +15,7 @@ setTimeout(function(){
     var eve_i_event = eve_i["event"];
     var eve_i_date = eve_i["Date"];
     var eve_i_img = eve_i["img"]; 
-    var $input = $('<input/>').attr({ type: 'button', class:'eventsButton', id:eve_i_date, img:eve_i_img, value:eve_i_event, name:eve_i_event});
+    var $input = $('<input/>').attr({ type: 'button', class:'eventsButton', id:eve_i_date, "data-img" :eve_i_img, value:eve_i_event, name:eve_i_event});
     $input.appendTo('div#upcoming_eve');
   });
   startClock(upcoming_eve[0]["Date"]);
@@ -22,8 +24,12 @@ setTimeout(function(){
 
 
 $(document).on('click','.eventsButton',function(){
+  clearInterval(timeinterval);
+  $('#eve_img').empty();
   startClock(this.id);
   $('#event_name').text(this.name);
+  var $input = $('<img>').attr({ src: $(this).attr("data-img")});
+  $input.appendTo('section#eve_img');
 });
 
 function leftTimeToNewYear(endThisYear){
@@ -71,18 +77,20 @@ function startClock(endThisYear){
 
    }
    updateClock();
-   var timeinterval = setInterval(updateClock, 1000);
+   timeinterval = setInterval(updateClock, 1000);
 }
+
+
 //var endThisYear = new Date(Date.parse(new Date()) + 1 * 24 * 60 * 60 * 1000);
 // startClock(endThisYear);
 
-var AfterYearComplication = document.getElementById("AfterYearComplication");
-AfterYearComplication.style.visibility="hidden";
-function zerozero(){
-    AfterYearComplication.style.visibility="visible";
-    var abc =document.getElementById("welcomeToNewYear");
-    abc.innerHTML=`Hello ${whatsYourname} Welcome to 2017! Enjoy`;
-}
+// var AfterYearComplication = document.getElementById("AfterYearComplication");
+// AfterYearComplication.style.visibility="hidden";
+// function zerozero(){
+//     AfterYearComplication.style.visibility="visible";
+//     var abc =document.getElementById("welcomeToNewYear");
+//     abc.innerHTML=`Hello ${whatsYourname} Welcome to 2017! Enjoy`;
+// }
 
 // window.onload = function(){
 //     var nameOfPerson = document.getElementById("nameOfPerson");
