@@ -1,11 +1,11 @@
 // made By Dheeraj Kumar Rao
 // Github:- github.com/rao123dk
 //twitter:- twitter.com/rao123dk
+// made with love by Rao.js library(<script src="https://cdn.rawgit.com/rao123dk/Rao.js/0ac3dd7a/rao.js"></script>)
 
 "use strict"
-
-var displaykeycode =document.getElementById('keycode');
-var displaykeychar =document.getElementById('keychar');
+var displaykeycode = rao('#keycode'); 
+var displaykeychar = rao('#keychar'); 
 document.addEventListener("keydown",function(e){
 	var keynum;
 	if (window.event) {
@@ -19,13 +19,15 @@ document.addEventListener("keydown",function(e){
     }else if(keynum ===91){
     	keychar ="Window"
     }
-	displaykeycode.innerHTML= keynum;
-	displaykeychar.innerHTML= keychar;
+	displaykeycode.text(keynum);
+	displaykeychar.text(keychar);
 	
 	if(keynum =>65 && keynum <=90){
-		displaykeycode.style.color="red";
+		//displaykeycode.style.color="red";
+		displaykeycode.attri("class","redcolor");
 	}else{
-		displaykeycode.style.color="green";
+		//displaykeycode.style.color="greencolor";
+		displaykeycode.attri("class","greencolor");
 	}
 
 
