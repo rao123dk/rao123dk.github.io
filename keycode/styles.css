@@ -1,0 +1,33 @@
+#welcome{
+	font-size: 70px;
+}
+
+#keycode{
+
+	font-size: 200px;
+}
+
+#keychar{
+
+	font-size: 80px;
+}
+
+#result_to_disaply {
+  position: absolute;
+  width: 600px;
+  height: 200px;
+  z-index: 15;
+  top: 5%;
+  left: 50%;
+  margin: -60px 0 0 -150px;
+  
+}
+
+#myprofile{
+	 margin-left: 1cm;
+	 margin-right: 1cm;
+	 width:20px;
+	 overflow:hidden;
+	 height:21px;
+	 background-color:#11F0ED;
+}

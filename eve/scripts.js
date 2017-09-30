@@ -1,5 +1,3 @@
-
-var endThisYear = 'Sat Dec 31 2017 23:59:59 GMT+0530 (India Standard Time)';
 var _url= "evelist.json";
 var upcoming_eve;
 var timeinterval;
@@ -82,21 +80,7 @@ function startClock(endThisYear){
 }
 
 
-//var endThisYear = new Date(Date.parse(new Date()) + 1 * 24 * 60 * 60 * 1000);
-// startClock(endThisYear);
 
-// var AfterYearComplication = document.getElementById("AfterYearComplication");
-// AfterYearComplication.style.visibility="hidden";
-// function zerozero(){
-//     AfterYearComplication.style.visibility="visible";
-//     var abc =document.getElementById("welcomeToNewYear");
-//     abc.innerHTML=`Hello ${whatsYourname} Welcome to 2017! Enjoy`;
-// }
 
-// window.onload = function(){
-//     var nameOfPerson = document.getElementById("nameOfPerson");
-//     //var whatsYourname = prompt("Welcome, what is your name ?").toUpperCase();
-//      nameOfPerson.innerHTML = `WELCOME ${whatsYourname}`;
-//      nameOfPerson.style.color="red";
-     
-// }
+
+
