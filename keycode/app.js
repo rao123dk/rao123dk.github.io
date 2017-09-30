@@ -1,7 +1,7 @@
 // made By Dheeraj Kumar Rao
 // Github:- github.com/rao123dk
 //twitter:- twitter.com/rao123dk
-// made with love by Rao.js library(<script src="https://cdn.rawgit.com/rao123dk/Rao.js/0ac3dd7a/rao.js"></script>)
+// made with love by Rao.js library(https://github.com/rao123dk/Rao.js)
 
 "use strict"
 var displaykeycode = rao('#keycode'); 
@@ -15,24 +15,25 @@ document.addEventListener("keydown",function(e){
     }
     var keychar = String.fromCharCode(keynum);
     if(keynum ===32){
-    	keychar ="Space"
+    	keychar ="Space";
     }else if(keynum ===91){
-    	keychar ="Window"
+    	keychar ="Window";
+    }else if(keynum === 116){
+    		keychar ="F5";
+    		e.preventDefault();
     }
 	displaykeycode.text(keynum);
 	displaykeychar.text(keychar);
 	
 	if(keynum =>65 && keynum <=90){
-		//displaykeycode.style.color="red";
 		displaykeycode.attri("class","redcolor");
 	}else{
-		//displaykeycode.style.color="greencolor";
 		displaykeycode.attri("class","greencolor");
 	}
 
 
 // prevent
-	if((keynum ===83 ||keynum ===68 ||keynum ===65)&& e.ctrlKey){
+	if((keynum ===83 ||keynum ===68 ||keynum ===65 )&& e.ctrlKey){
 		e.preventDefault();
 		return false;
 	}
