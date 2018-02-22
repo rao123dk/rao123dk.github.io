@@ -1,7 +1,7 @@
-// made By Dheeraj Kumar Rao
-// Github:- github.com/rao123dk
-//twitter:- twitter.com/rao123dk
-// made by Rao.js library(https://github.com/rao123dk/Rao.js)
+//@@ made By Dheeraj Kumar Rao
+//@@ Github:- github.com/rao123dk
+//@@ twitter:- twitter.com/rao123dk
+//@@ made by Rao.js library(https://github.com/rao123dk/Rao.js)
 
 "use strict"
 var key_code_value = {
@@ -55,12 +55,12 @@ var key_code_value = {
 	"12" : "Clear",
 	"219" : "Open bracket ",
 	"221" : "Close bracket"
-	
+
 
 
 };
-var displaykeycode = rao('#keycode'); 
-var displaykeychar = rao('#keychar'); 
+var displaykeycode = rao('#keycode');
+var displaykeychar = rao('#keychar');
 document.addEventListener("keydown",function(e){
 	var keynum;
 	if (window.event) {
@@ -96,12 +96,12 @@ document.addEventListener("keydown",function(e){
 var initial_width=10;
 var docwidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
-function increment(){	
+function increment(){
 	initial_width+=2;
 	if(initial_width+50>=docwidth) {
 	clearInterval(d);
 	}
-	document.getElementById("myprofile").style.width =initial_width+"px";	
+	document.getElementById("myprofile").style.width =initial_width+"px";
 }
 
 var d= setInterval("increment()",10);
