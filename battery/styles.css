@@ -1,0 +1,21 @@
+#result_to_disaply {
+  position: absolute;
+  width: 600px;
+  height: 400px;
+  z-index: 15;
+  top:  5%;
+  left: 50%;
+  margin: -50px 0 0 -150px;
+  
+}
+
+#title{
+	font-size: 200%;
+}
+#chrger_connected{
+	font-size: 400%;
+}
+
+#display_battery_level{
+	font-size: 600%;
+}
