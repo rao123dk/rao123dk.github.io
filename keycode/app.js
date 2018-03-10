@@ -118,3 +118,4 @@ function typing() {
 }
 
 var kk = setInterval("typing()", 500);
+document.write("<script>console.log('%c Thanks! If you found any problem, please give me your valuable feedback -> edx.dheerajrao@gmail.com . ', 'background:#1a59bf; font-size:30px;');</script>");
