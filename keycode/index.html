@@ -1,27 +1,41 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Welcome to Key Code</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
     <script src="https://cdn.rawgit.com/rao123dk/Rao.js/dca29915/rao.js">
     </script>
+    <script>
+        window.onbeforeunload = function () { //Prevent Ctrl+W
+            return "Really want to quit ?";
+        };
+    </script>
 </head>
-<body>
-    <div id="myprofile"> const Dheeraj_Kumar_Rao = [{"Github" : "www.github.com/rao123dk"} , {"Twitter": "https://twitter.com/rao123dk"}], Thanks
+
+<body id="body">
+    <!-- <div id="myprofile"> const Dheeraj_Kumar_Rao = [{"Github" : "www.github.com/rao123dk"} , {"Twitter": "https://twitter.com/rao123dk"}], Thanks
         Please suggest or fork at
         <a href="https://github.com/rao123dk/Keyboard-key-code">Github</a>
-    </div>
+    </div> -->
+   <center> <div>Get JavaScript Event Key Code</div></center>
     <div id="result_to_disaply">
-        <p id="welcome"> Press Any key<span>&rarr;</span> </p>
-        <div id="keycode" style="display: inline" title="Keycode of button you have pressed."></div>
-        <div id="keychar" style="display: inline" title="Button"></div>
-
+        <p id="welcome" title="Except Power Button!!"></p>
+        <div id="hint">
+            <span id="clickToCopy"></span>
+            <div id="track_code"></div>
+        </div>
+        <div id="keycode" style="display: inline" title="JavaScript Event Keycode"></div>
+        <div id="keychar" style="display: inline" title="pressed <button>"></div>
     </div>
-
-
     <script src="app.js">
+    </script>
+    <script src="action.js">
     </script>
 
 </body>
+
 </html>
