@@ -2,6 +2,7 @@
 My Personal website.
 
 You can also see 
-rao123dk.github.io/keycode
-rao123dk.github.io/speech
+* [Keycode](rao123dk.github.io/keycode)
+* [Speech recognition](rao123dk.github.io/speech)
+* [Battery Status](rao123dk.github.io/battery)
 
