@@ -14,7 +14,7 @@ function displayBatteryLevel(){
 		}else{
 			chrger_connected="disconnected";
 		}
-		//console.log(data);
+		console.log(data);
 		document.getElementById('display_battery_level').innerHTML=battery_charge +"%";
 		document.getElementById('chrger_connected').innerHTML= "Charger " +chrger_connected ;
 		document.getElementById('chargeTime').innerHTML= "FullCharge Time:- "+data.chargingTime;

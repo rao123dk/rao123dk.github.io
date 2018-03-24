@@ -1,0 +1,61 @@
+<!-- 
+	@@ Name :- Dheeraj Kumar Rao
+	@@ Twitter :- https://twitter.com/rao123dk
+	@@ Github :- https://github.com/rao123dk
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>⚀ Roll the Dice ⚅ </title>
+<style>
+#dice {
+	font-size: 8rem;
+	transition-property: transform;
+    transition-duration: 2s;
+}
+#continer {
+    width: 120px;
+    height: 120px;
+
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin: auto;
+}
+body {
+	background-color: #a260ad;
+}
+#footer {
+    padding-top: 10px;
+    padding-bottom: 0px;
+    position:fixed;
+    bottom:0;
+    width:100%;
+}
+</style>
+</head>
+<body>
+	<div id="continer">
+		<div>Click on dice... &#9759;</div>
+		<div id="dice"></div>
+	</div>
+	<div id="footer">
+		By :- Dheeraj Kumar Rao &#x270B;<br>
+		<a href="https://twitter.com/rao123dk" target="_blank">Twitter</a>&#x2709;
+		<a href="https://github.com/rao123dk" target="_blank">Github</a>
+	</div>
+<script>
+var dice = document.getElementById('dice');
+(roll_dice = () => {
+		dice.innerHTML= "&#x268" + Math.floor(Math.random() * 6) + "; ";
+})();
+dice.addEventListener('click',roll_dice);
+
+</script>
+</body>
+</html>
+
