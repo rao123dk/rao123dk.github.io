@@ -1,16 +1,120 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="https://rawcdn.githack.com/rao123dk/Rao.js/49a0ee053b07522d1ca875c7748e003ac724bc8f/rao.js">
-        </script>
-        <script src="./v1.1/js/jquery.min.js"></script>
-    </head>
-    <body>
-        <div>
 
+<head>
+    <title>Tagger</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://rawcdn.githack.com/rao123dk/Rao.js/49a0ee053b07522d1ca875c7748e003ac724bc8f/rao.js">
+    </script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="well well-lg"><strong>Create # tags for your social page post</strong></div>
+
+        <div class="panel panel-default">
+                <div class="panel-heading">Select tags</div>
+                <div class="panel-body">
+                        <form id="taggerList" class="row">
+                        </form>
+                        <div class="form-group">
+                                <label for="usr">Custom:</label>
+                                <input type="text" class="form-control" id="Custom">
+                                <button type="button" class="btn btn-success" id="Add">Add</button>
+                                <button type="button" class="btn btn-success" onclick="(()=>{location.reload()})();">Clear All</button>
+                        </div>
+                </div>
         </div>
 
-    </body>
+        <form>
+                <div class="form-group">
+                  <label for="comment">Tags:</label>
+                  <textarea class="form-control" rows="5" id="createdTags"></textarea>
+                </div>
+        </form>
+
+        <div class="panel panel-success">
+            <div class="panel-heading">Thanks</div>
+            <div class="panel-body" id="status"></div>
+        </div>
+    </div>
+<script>
+$(document).ready(function(){
+    const Tags =
+    [
+        "javascript",
+        "javascriptdeveloper",
+        "react",
+        "reactnative",
+        "reactjs",
+        "angular",
+        "vuejs",
+        "nodejs",
+        "es6",
+        'Polymer',
+        'Meteor',
+        "webdeveloper",
+        "web",
+        "softwaredeveloper",
+        "engineering",
+        "typescript",
+        "mongodb",
+        "mern",
+        "mean"
+    ]
+    var checkBoxItems = ''
+    for (var i = 0; i < Tags.length; i++) {
+        checkBoxItems += `
+        <label class="col-xs-6 col-md-3">
+            <input type="checkbox" value=#${Tags[i]}> ${Tags[i].toLocaleUpperCase()}
+        </label>`;
+    }
+    $('#taggerList').html(checkBoxItems);
+
+
+
+    //
+    let taagerGenratedList = '';
+    $('#taggerList').on('change', 'input[type=checkbox]', function() {
+        let val = $(this).val().trim();
+        combineTags(val);
+
+    });
+
+
+    $("#Add").click(function(){
+        combineTags("#"+$('#Custom').val().trim());
+    });
+    function combineTags(val){
+        if (val != null && taagerGenratedList.indexOf(val) === -1) {
+            taagerGenratedList  += " " +val;
+        }
+        $('#createdTags').html('');
+        $('#createdTags').html(taagerGenratedList);
+        console.log('taagerGenratedList: ', taagerGenratedList);
+        copyToClipboard();
+    }
+
+    function copyToClipboard(){
+        let tagsInArea = $('#createdTags');
+         tagsInArea.select();
+         document.execCommand("copy");
+         $('#status').text("successfully created and copied in clipboard");
+    }
+
+});
+</script>
+</body>
+
 </html>
+
