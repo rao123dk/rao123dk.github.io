@@ -98,10 +98,11 @@ $(document).ready(function(){
     function combineTags(val){
         if (val != null && taagerGenratedList.indexOf(val) === -1) {
             taagerGenratedList  += " " +val;
+        }else{
+            taagerGenratedList = taagerGenratedList.replace(val, '');
         }
         $('#createdTags').html('');
-        $('#createdTags').html(taagerGenratedList);
-        console.log('taagerGenratedList: ', taagerGenratedList);
+        $('#createdTags').html(taagerGenratedList.trim());
         copyToClipboard();
     }
 
