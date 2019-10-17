@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Send whatsapp message without saving a number</title>
+  <meta name="description" content="send whatsapp message without saving a number" />
+	<meta name="keywords" content="Send message to whatsapp, whatsapp, send, send whatsapp message without saving a number" />
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <form class="m-5 align-self-center align-items-center justify-content-center">
+            <div class="form-group">
+                <label for="sel1">Select Country:</label>
+                <select class="form-control" id="sel1">
+                  <option value="+91">+91(India)</option>
+                  <option value="+1">+1(USA)</option>
+                </select>
+              </div>
+          <div class="form-group">
+            <label for="mobileNumber">Mobile No</label>
+            <input type="number" class="form-control" id="mobileNumber" placeholder="+9180******19" />
+          </div>
+          <div class="d-flex align-items-center">
+          <button type="button" id="send" class="btn btn-primary align-self-center">
+            Send
+          </button>
+          </div>
+        </form>
+      </div>
+
+<script>
+  $(document).ready(function(){
+    console.log(
+            `
+            %c
+            *******************************
+            *******************************
+            *******************************
+            *******************************
+            *******************************
+            ********DHEERJ KUMAR RAO*******
+            *https://twitter.com/rao123dk**
+            *******************************
+            *******************************
+            *******************************
+            *******************************
+            *******************************
+            `,
+            'background: #fcdf03; color: #000'
+    )
+    var countryCode = '+91';
+    var mobile = '';
+    $('select').on('change, click', function() {
+      countryCode = $(this).val();
+    });
+
+    $('#mobileNumber').on('change paste keyup', function() {
+      mobile = $(this).val();
+    });
+
+    $("#send").click(function(e){
+      if(countryCode && mobile){
+        e.preventDefault();
+        var url = "https://api.whatsapp.com/send?phone="+countryCode+mobile;
+        window.open(url, '_blank');
+        return;
+      }
+      alert("Please enter correct info");
+    });
+  });
+</script>
+
+</body>
+</html>
