@@ -50,7 +50,7 @@
     </div>
 <script>
 $(document).ready(function(){
-    const Tags =
+    let definedTags =
     [
         "javascript",
         "javascriptdeveloper",
@@ -73,6 +73,10 @@ $(document).ready(function(){
         "mean"
     ]
     var checkBoxItems = ''
+    var customtags = fetchFromDB() || []
+
+    Tags  = definedTags.concat(customtags);
+
     for (var i = 0; i < Tags.length; i++) {
         checkBoxItems += `
         <label class="col-xs-6 col-md-3">
@@ -93,7 +97,9 @@ $(document).ready(function(){
 
 
     $("#Add").click(function(){
-        combineTags("#"+$('#Custom').val().trim());
+        var currentCustomTag = $('#Custom').val().trim();
+        combineTags("#"+currentCustomTag);
+        addToDB(currentCustomTag);
     });
     function combineTags(val){
         if (val != null && taagerGenratedList.indexOf(val) === -1) {
@@ -111,6 +117,21 @@ $(document).ready(function(){
          tagsInArea.select();
          document.execCommand("copy");
          $('#status').text("successfully created and copied in clipboard");
+    }
+
+    function addToDB(tag){
+        var fetchTags = localStorage.getItem("Tags");
+        var storedTags;
+        if(fetchTags){
+            storedTags = JSON.parse(fetchTags);
+        }
+
+        const dataToInsert = [storedTags, tag]
+        localStorage.setItem("Tags", JSON.stringify(dataToInsert));
+    }
+
+    function fetchFromDB(){
+        return JSON.parse(localStorage.getItem("Tags"));
     }
 
 });
