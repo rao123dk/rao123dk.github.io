@@ -75,7 +75,7 @@ $(document).ready(function(){
     var checkBoxItems = ''
     var customtags = fetchFromDB() || []
 
-    Tags  = definedTags.concat(customtags);
+    var Tags  = customtags && customtags.length ? definedTags.concat(customtags) : definedTags;
 
     for (var i = 0; i < Tags.length; i++) {
         checkBoxItems += `
@@ -122,11 +122,13 @@ $(document).ready(function(){
     function addToDB(tag){
         var fetchTags = localStorage.getItem("Tags");
         var storedTags;
+        var dataToInsert; 
         if(fetchTags){
             storedTags = JSON.parse(fetchTags);
+            dataToInsert = [storedTags, tag]
         }
-
-        const dataToInsert = [storedTags, tag]
+        dataToInsert = [tag]
+        
         localStorage.setItem("Tags", JSON.stringify(dataToInsert));
     }
 
