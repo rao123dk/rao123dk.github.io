@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tagger</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="well well-lg"><strong>Paste raw token</strong></div>
+
+        <form>
+                <div class="form-group">
+                  <label for="comment">Token:</label>
+                  <textarea class="form-control" rows="5" id="rawToken"></textarea>
+                </div>
+        </form>
+        <form>
+                <div class="form-group">
+                  <label for="comment">Token:</label>
+                  <textarea class="form-control" rows="2" id="accessToken"></textarea>
+                </div>
+        </form>
+
+        <div class="panel panel-success">
+            <div class="panel-heading">Thanks</div>
+            <div class="panel-body" id="status"></div>
+        </div>
+
+        <div style="word-wrap:break-word;display:block;">  <span>Jwt decode</span>
+                <code id="jwtDecode">
+                </code>
+        </div>
+    </div>
+<script>
+$(document).ready(function(){
+
+    $('#rawToken').on('change keyup paste', function(){
+        var rawToken = $(this).val();
+        rawToken = decodeURIComponent(rawToken);
+        console.log(typeof rawToken, JSON.parse(rawToken))
+        var parseToken = rawToken ? JSON.parse(rawToken) : "";
+        var accessToken = parseToken['access_token'];
+        $('#accessToken').text(accessToken);
+
+        copyToClipboard();
+
+        //jwtDecode
+        var jwtDecode = parseJwt(accessToken);
+
+        console.log(jwtDecode)
+        $('#jwtDecode').text(JSON.stringify(jwtDecode))
+
+
+    })
+
+
+    function parseJwt (token) {
+        var base64Url = token.split('.')[1];
+        var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+
+        return JSON.parse(jsonPayload);
+    };
+
+
+    function copyToClipboard(){
+        let tagsInArea = $('#accessToken');
+         tagsInArea.select();
+         document.execCommand("copy");
+         $('#status').text("successfully created and copied in clipboard");
+    }
+
+
+
+});
+</script>
+</body>
+
+</html>
+
