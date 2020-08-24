@@ -18,7 +18,7 @@
 
 <body>
     <div class="container">
-        <div class="well well-lg"><strong>Paste raw token</strong></div>
+        <div class="well well-lg"><strong>Paste raw token object</strong></div>
 
         <form>
                 <div class="form-group">
@@ -38,7 +38,7 @@
             <div class="panel-body" id="status"></div>
         </div>
 
-        <div style="word-wrap:break-word;display:block;">  <span>Jwt decode</span>
+        <div style="word-wrap:break-word;display:block;">  <span>PAYLOAD:DATA</span>
                 <code id="jwtDecode">
                 </code>
         </div>
@@ -59,11 +59,37 @@ $(document).ready(function(){
         //jwtDecode
         var jwtDecode = parseJwt(accessToken);
 
-        console.log(jwtDecode)
-        $('#jwtDecode').text(JSON.stringify(jwtDecode))
-
+        //console.log(jwtDecode)
+        //$('#jwtDecode').text(JSON.stringify(jwtDecode))
+        $('#jwtDecode').html(makeHTML(jwtDecode));
 
     })
+
+    function makeHTML (jwtDecode){
+        let html = `<table class="table">
+                        <thead>
+                          <tr>
+                            <th>keu</th>
+                            <th>value</th>
+                          </tr>
+                        </thead>
+                    <tbody>
+        `;
+
+        for(let item in jwtDecode){
+                let currTd = `
+                    <tr>
+                        <td>${item}</td>
+                        <td>${jwtDecode[item]}</td>
+                    </tr>
+                `;
+
+            html += currTd;
+        }
+
+        html += `</tbody></table>`;
+        return html;       
+    }
 
 
     function parseJwt (token) {
