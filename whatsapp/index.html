@@ -2,27 +2,48 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Send whatsapp message without saving a number</title>
+  <title>Send WhatsApp message without saving a number</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="send whatsapp message without saving a number" />
 	<meta name="keywords" content="Send message to whatsapp, whatsapp, send, send whatsapp message without saving a number" />
   <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  
+   <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
+
+
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
   <!-- <link rel="manifest" href="/manifest.json"> -->
+  <style>
+    .footer {
+       position: fixed;
+       left: 0;
+       bottom: 0;
+       width: 100%;
+       background-color: #00ff37b3;
+       color: white;
+       text-align: center;
+    }
+</style>
+ 
+
 
 </head>
 <body>
     <div class="container">
         <div class="m-5 align-self-center align-items-center justify-content-center">
-          Send message on whatsapp without adding to your contacts
+          Send message on WhatsApp without adding to your contacts list
         </div>
         <form class="m-5 align-self-center align-items-center justify-content-center">
               <div class="form-group">
                 <label for="mobileNumber">Country Code</label>
-                <a href="https://countrycode.org/" target="_blank">(What is mine?)</a>
+                <a href="https://countrycode.org/" target="_blank">?</a>
                 <input type="text" class="form-control" id="countryCode" placeholder="91" />
               </div>
               <div class="form-group">
@@ -34,8 +55,63 @@
                 Send
               </button>
           </div>
+          
         </form>
+        <div class="m-5 align-self-center align-items-center justify-content-center">
+              <ul class="list-group">
+                 <li class="list-group-item">You can send message on your own WhatsApp number</li>
+                <li class="list-group-item">We did not store anything.</li>
+              </ul>
+        </div>
+
+        <div class="footer">
+          <p>Vistors</p>
+          <div style="color: black"  id="total_page_view"></div>
+        </div>
+        
       </div>
+
+
+
+      <script type="application/javascript">
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+          apiKey: "AIzaSyCW-9jswKWSVR5Ow6Z0AwDLjNL0LfjdDlA",
+          authDomain: "zerowhatsapplivecounter.firebaseapp.com",
+          databaseURL: "https://zerowhatsapplivecounter.firebaseio.com",
+          projectId: "zerowhatsapplivecounter",
+          storageBucket: "zerowhatsapplivecounter.appspot.com",
+          messagingSenderId: "837356615942",
+          appId: "1:837356615942:web:fd52d37cd72cc3ad858687"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        var viewers_ip;
+        function get_viewer_ip(json){
+          viewers_ip = json.ip;
+          countView(viewers_ip)
+        }
+        function countView(viewers_ip){
+          var views;
+          var ipToString = viewers_ip.toString();
+
+          for (var i = 0; i < ipToString.length ; i++) {
+            ipToString = ipToString.replace(".", "-")
+          }
+
+          firebase.database().ref().child("page_view/"+ipToString).set({
+            viewers_ip : viewers_ip
+          });
+
+          firebase.database().ref().child("page_view").on("value", function(snapshot){
+              views  = snapshot.numChildren();
+              $('#total_page_view').text( views);
+          })
+
+        }
+      </script>
+      <script type="text/javascript" src="https://api.ipify.org?format=jsonp&callback=get_viewer_ip"></script>
       <script src="./whatsapp.js"> </script>
 </body>
 </html>

@@ -17,7 +17,7 @@ $(document).ready(function(){
             `,
             'background: #fcdf03; color: #000'
     )
-    var CommentNode = document.createComment("Send whatsapp message without saving a number");
+    var CommentNode = document.createComment("Send message on WhatsApp without adding to your contacts list");
     document.body.appendChild(CommentNode);
     var countryCode = '+91';
     var mobile = '';
